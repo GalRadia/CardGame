@@ -13,6 +13,7 @@
 		FBC04D6C2C2D940100958828 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FBC04D6B2C2D940100958828 /* Base */; };
 		FBC04D6E2C2D940200958828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC04D6D2C2D940200958828 /* Assets.xcassets */; };
 		FBC04D712C2D940200958828 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FBC04D702C2D940200958828 /* Base */; };
+		FBC04D792C2DA79400958828 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC04D782C2DA79400958828 /* utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FBC04D6D2C2D940200958828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBC04D702C2D940200958828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBC04D722C2D940200958828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBC04D782C2DA79400958828 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				FBC04D6D2C2D940200958828 /* Assets.xcassets */,
 				FBC04D6F2C2D940200958828 /* LaunchScreen.storyboard */,
 				FBC04D722C2D940200958828 /* Info.plist */,
+				FBC04D782C2DA79400958828 /* utils.swift */,
 			);
 			path = CardGame;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				FBC04D692C2D940100958828 /* ViewController.swift in Sources */,
 				FBC04D652C2D940100958828 /* AppDelegate.swift in Sources */,
 				FBC04D672C2D940100958828 /* SceneDelegate.swift in Sources */,
+				FBC04D792C2DA79400958828 /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
