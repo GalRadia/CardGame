@@ -74,6 +74,14 @@
                             <constraint firstAttribute="bottom" secondItem="X7N-nW-da7" secondAttribute="bottom" id="sAt-m1-UXO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="img1" destination="AiK-Vp-0JK" id="2S9-a9-7jS"/>
+                        <outlet property="img2" destination="AiK-Vp-0JK" id="X6s-8D-t9n"/>
+                        <outlet property="imgB" destination="kbP-HO-bk3" id="G7A-Jv-uvq"/>
+                        <outlet property="imgR" destination="fzD-Ps-qIJ" id="3Fi-LH-lqF"/>
+                        <outlet property="lbl1" destination="7fF-ax-4O6" id="0f7-K0-yn1"/>
+                        <outlet property="lbl2" destination="qxN-43-QZp" id="4cI-XZ-VHe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,8 +10,14 @@ import UIKit
 class ViewController: UIViewController {
    
     
-    private var player1Index = -1
-    private var player2Index = -1
+    private var playerBIndex = -1
+    private var playerRIndex = -1
+    
+    @IBOutlet weak var imgR: UIImageView!
+    @IBOutlet weak var imgB: UIImageView!
+    @IBOutlet weak var lblR: UILabel!
+    @IBOutlet weak var lblB: UILabel!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +30,27 @@ class ViewController: UIViewController {
 }
 extension ViewController: CallBack_GameTimer{
     func changeImages() {
-        player1Index = Int.random(in:0...13)
-        player2Index = Int.random(in:0...13)
+        playerBIndex = Int.random(in:0...13)
+        playerRIndex = Int.random(in:0...13)
+        imgB.image = UIImage(named: "card\(playerBIndex)")
+        imgR.image = UIImage(named: "card\(playerRIndex)")
         
     }
     
     func closeImages() {
-        <#code#>
+        imgB.image = UIImage(named: "cardBB")
+        imgR.image = UIImage(named: "cardBR")
     }
     
     func updateResult() {
-        <#code#>
+        if(playerBIndex>playerRIndex){
+            
+        }
+        else if(playerRIndex>playerBIndex){
+            
+        }
+        else{
+            
+        }
     }
 }
