@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardB: UIImageView!
     private var playerBIndex = -1
     private var playerRIndex = -1
+    public var property="0"
+    
+
     
 
     

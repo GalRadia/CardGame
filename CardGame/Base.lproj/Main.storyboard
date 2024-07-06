@@ -61,7 +61,8 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="SUx-Lt-WpW"/>
+                                            <action selector="buttonClicked:" destination="JSL-qW-bxY" eventType="touchUpInside" id="JsX-7K-AiF"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" id="c3A-wc-2MZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
