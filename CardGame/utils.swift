@@ -18,7 +18,7 @@ class GameTimer{
     }
     func startTimer(){
         currentStep = 0
-        schedulerTimer(interval: 3.0)
+        schedulerTimer(interval: 1.0)
     }
     private func schedulerTimer(interval: TimeInterval){
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerFired), userInfo: nil, repeats: false)
