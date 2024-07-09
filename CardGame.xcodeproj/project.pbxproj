@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2819C462C3D967800CFAF97 /* StepDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2819C452C3D967800CFAF97 /* StepDetector.swift */; };
+		B2819C482C3D96CD00CFAF97 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2819C472C3D96CD00CFAF97 /* EndViewController.swift */; };
 		FBBDE6F12C39A70A00DF982B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBDE6F02C39A70A00DF982B /* StartViewController.swift */; };
 		FBC04D652C2D940100958828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC04D642C2D940100958828 /* AppDelegate.swift */; };
 		FBC04D672C2D940100958828 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC04D662C2D940100958828 /* SceneDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2819C452C3D967800CFAF97 /* StepDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDetector.swift; sourceTree = "<group>"; };
+		B2819C472C3D96CD00CFAF97 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		FBBDE6F02C39A70A00DF982B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FBC04D612C2D940100958828 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC04D642C2D940100958828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				FBC04D722C2D940200958828 /* Info.plist */,
 				FBC04D782C2DA79400958828 /* utils.swift */,
 				FBBDE6F02C39A70A00DF982B /* StartViewController.swift */,
+				B2819C452C3D967800CFAF97 /* StepDetector.swift */,
+				B2819C472C3D96CD00CFAF97 /* EndViewController.swift */,
 			);
 			path = CardGame;
 			sourceTree = "<group>";
@@ -147,6 +153,8 @@
 				FBBDE6F12C39A70A00DF982B /* StartViewController.swift in Sources */,
 				FBC04D692C2D940100958828 /* ViewController.swift in Sources */,
 				FBC04D652C2D940100958828 /* AppDelegate.swift in Sources */,
+				B2819C482C3D96CD00CFAF97 /* EndViewController.swift in Sources */,
+				B2819C462C3D967800CFAF97 /* StepDetector.swift in Sources */,
 				FBC04D672C2D940100958828 /* SceneDelegate.swift in Sources */,
 				FBC04D792C2DA79400958828 /* utils.swift in Sources */,
 			);

@@ -1,30 +1,92 @@
-//
-//  StartViewController.swift
-//  CardGame
-//
-//  Created by Student17 on 06/07/2024.
-//
-
 import UIKit
-class StartViewController : UIViewController{
-    @IBOutlet weak var insertNameButton: UIButton!
+import CoreLocation
+
+class StartViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet weak var nameLBL: UILabel!
-    let defaults = UserDefaults.standard
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var westImageView: UIImageView!
+    @IBOutlet weak var eastImageView: UIImageView!
+    @IBOutlet weak var nameButton: UIButton!
+    @IBOutlet weak var playGameButton: UIButton!
+    
+    private let userDefaults = UserDefaults.standard
+    private var locationManager: CLLocationManager!
+    private var playerName: String? {
+        didSet {
+            refreshUI()
+        }
+    }
+    private var playerLocation: CLLocation? {
+        didSet {
+            refreshUI()
+        }
+    }
+    private var locatedInEast: Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Retrieve the username from UserDefaults
-        if let username = UserDefaults.standard.string(forKey: "username") {
-            // Assign the username to the UILabel
-            nameLBL.text = "Username: \(username)"
+        initializeView()
+        configureLocationManager()
+        retrievePlayerName()
+        refreshUI()
+    }
+    
+    private func initializeView() {
+        playGameButton.isHidden = true
+    }
+    
+    private func configureLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func retrievePlayerName() {
+        playerName = userDefaults.string(forKey: "playerName")
+    }
+    
+    private func refreshUI() {
+        updateWelcomeLabel()
+        toggleNameButtonVisibility()
+        updateLocationBasedViews()
+        togglePlayButtonVisibility()
+    }
+    
+    private func updateWelcomeLabel() {
+        if let name = playerName {
+            welcomeLabel.text = "Hello, \(name)!"
         } else {
-            // Handle case where username isn't found in UserDefaults
-            nameLBL.text = "Username not found"
+            welcomeLabel.text = "Please enter your name"
         }
     }
     
-    @IBAction func buttonPressed(_ sender: UIButton) {
+    private func toggleNameButtonVisibility() {
+        nameButton.isHidden = playerName != nil
+    }
+    
+    private func updateLocationBasedViews() {
+        if let location = playerLocation {
+            if location.coordinate.latitude > 34.817549168324334 {
+                eastImageView.isHidden = false
+                westImageView.isHidden = true
+            } else {
+                eastImageView.isHidden = true
+                westImageView.isHidden = false
+            }
+        }
+    }
+    
+    private func togglePlayButtonVisibility() {
+        playGameButton.isHidden = playerName == nil || playerLocation == nil
+    }
+    
+    @IBAction private func nameButtonTapped(_ sender: UIButton) {
+        showNameEntryAlert()
+    }
+    
+    private func showNameEntryAlert() {
         let alertController = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
         
         alertController.addTextField { textField in
@@ -33,8 +95,7 @@ class StartViewController : UIViewController{
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak alertController] _ in
             guard let textField = alertController?.textFields?.first, let name = textField.text else { return }
-            self?.defaults.set(name, forKey: "username")
-            self?.nameLBL.text = "Hello \(name)"
+            self?.savePlayerName(name)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -44,24 +105,31 @@ class StartViewController : UIViewController{
         
         present(alertController, animated: true, completion: nil)
     }
-    @IBAction func buttonClicked(_ sender: UIButton) {
-        performSegue(withIdentifier: "showSecondViewController", sender: self)
-      //  dismiss(animated: true, completion: nil)
-
+    
+    private func savePlayerName(_ name: String) {
+        userDefaults.set(name, forKey: "playerName")
+        playerName = name
     }
-
+    
+    @IBAction private func playGameButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "startGame", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewController" {
-            // Get reference to the destination view controller
-            let destinationVC = segue.destination as! ViewController
-            
-            // Pass any data to the destination view controller here, if needed
-            if let username = UserDefaults.standard.string(forKey: "username") {
-                // Assign the username to the UILabel
-                destinationVC.property = username
+        if segue.identifier == "startGame" {
+            if let gameVC = segue.destination as? ViewController {
+                gameVC.playerName = playerName
+                gameVC.isLocatedInEast = locatedInEast
             }
         }
-        
-        
+    }
+    
+    // CLLocationManagerDelegate methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            playerLocation = location
+            locatedInEast = location.coordinate.latitude > 34.817549168324334
+            locationManager.stopUpdatingLocation()
+        }
     }
 }
