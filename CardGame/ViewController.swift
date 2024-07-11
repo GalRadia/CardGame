@@ -21,23 +21,14 @@ class ViewController: UIViewController {
     
     private let cardImages = (2...14).map { "card\($0)" }
     private var stepDetector: StepDetector?
-    private var tickSoundPlayer: AVAudioPlayer?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureAudioSession()
         initializeGame()
-        setupAudioPlayer()
     }
     
-    private func configureAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Failed to set up audio session: \(error.localizedDescription)")
-        }
-    }
+ 
     
     private func initializeGame() {
         setupPlayerNames()
@@ -48,31 +39,14 @@ class ViewController: UIViewController {
         if let name = playerName, let isLocatedInEast = isLocatedInEast {
             if isLocatedInEast {
                 eastPlayerNameLabel.text = name
-                westPlayerNameLabel.text = "West Player"
+                westPlayerNameLabel.text = "ROBOT"
             } else {
                 westPlayerNameLabel.text = name
-                eastPlayerNameLabel.text = "East Player"
+                eastPlayerNameLabel.text = "ROBOT"
             }
         }
     }
     
-    private func setupAudioPlayer() {
-        guard let soundURL = Bundle.main.url(forResource: "tick", withExtension: "mp3") else {
-            print("Tick sound file not found")
-            return
-        }
-        
-        do {
-            tickSoundPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            tickSoundPlayer?.prepareToPlay()
-        } catch {
-            print("Error loading and playing tick sound: \(error.localizedDescription)")
-        }
-    }
-    
-    private func playTickSound() {
-        tickSoundPlayer?.play()
-    }
     
     private func resetGame() {
         eastScore = 0
@@ -94,7 +68,6 @@ class ViewController: UIViewController {
     }
     
     private func updateGameState() {
-        playTickSound()
         counter += 1
         
         if cardsVisible && counter == 3 {
@@ -105,8 +78,8 @@ class ViewController: UIViewController {
     }
     
     private func hideCards() {
-        westCardImageView.image = UIImage(named: "back")
-        eastCardImageView.image = UIImage(named: "back")
+        westCardImageView.image = UIImage(named: "cardBB")
+        eastCardImageView.image = UIImage(named: "cardBR")
         cardsVisible = false
         counter = 0
     }
@@ -152,19 +125,17 @@ class ViewController: UIViewController {
             winner = playerName ?? "Home Player"
             winnerScore = eastScore
         } else if eastScore > westScore {
-            winner = isLocatedInEast == true ? playerName! : "East Player"
+            winner = isLocatedInEast == true ? playerName! : "ROBOT"
             winnerScore = eastScore
         } else {
-            winner = isLocatedInEast == false ? playerName! : "West Player"
+            winner = isLocatedInEast == false ? playerName! : "ROBOT"
             winnerScore = westScore
         }
         
         performSegue(withIdentifier: "showEnd", sender: (winner, winnerScore))
     }
     
-    @IBAction private func startButtonTapped(_ sender: UIButton) {
-        resetGame()
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEnd" {

@@ -37,8 +37,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Enter Name"/>
                                         <connections>
-                                            <action selector="buttonPressed:" destination="Ina-BI-o3c" eventType="touchUpInside" id="dqy-ei-YMt"/>
-                                            <action selector="insertNameTapped:" destination="Ina-BI-o3c" eventType="touchUpInside" id="NQX-CN-2aP"/>
+                                            <action selector="nameButtonTapped:" destination="Ina-BI-o3c" eventType="touchUpInside" id="Yd9-SX-UUG"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-iz-181">
@@ -60,8 +59,8 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Start Game"/>
                                         <connections>
-                                            <action selector="startGameTapped:" destination="Ina-BI-o3c" eventType="touchUpInside" id="PcJ-Sq-EBM"/>
-                                            <segue destination="7oo-zN-vZQ" kind="show" id="pj2-p0-aeh"/>
+                                            <action selector="playGameButtonTapped:" destination="Ina-BI-o3c" eventType="touchUpInside" id="v2O-1j-yTg"/>
+                                            <segue destination="7oo-zN-vZQ" kind="show" identifier="startGame" id="pj2-p0-aeh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,12 +78,8 @@
                     <navigationItem key="navigationItem" id="AHs-1V-769"/>
                     <connections>
                         <outlet property="eastImageView" destination="AHS-3s-CRy" id="lwo-zg-Gkd"/>
-                        <outlet property="enterNameButton" destination="sn4-FI-82O" id="rqb-U3-tYm"/>
-                        <outlet property="greetingLabel" destination="LHG-Gq-OEh" id="L6E-ds-wVz"/>
                         <outlet property="nameButton" destination="utL-UW-8Ay" id="wH1-pT-nzR"/>
-                        <outlet property="nameLBL" destination="LHG-Gq-OEh" id="xbm-Ow-dHG"/>
                         <outlet property="playGameButton" destination="utL-UW-8Ay" id="Y8M-fs-Wjj"/>
-                        <outlet property="startGameButton" destination="utL-UW-8Ay" id="xSf-h2-tsK"/>
                         <outlet property="welcomeLabel" destination="LHG-Gq-OEh" id="Nl3-rh-OHW"/>
                         <outlet property="westImageView" destination="4MF-go-6RJ" id="TvP-NU-xMi"/>
                     </connections>
@@ -96,7 +91,7 @@
         <!--View Controller-->
         <scene sceneID="EoP-aw-NVt">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="7oo-zN-vZQ" customClass="ViewController" customModule="IosCardGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="7oo-zN-vZQ" customClass="ViewController" customModule="CardGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NoA-lt-KvU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,9 +162,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="MbO-lm-HHd" firstAttribute="top" secondItem="A0i-qk-2er" secondAttribute="top" constant="20" id="XrT-Im-eBW"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ucn-9U-S5E"/>
@@ -185,12 +177,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="gmV-30-zRl"/>
                     <connections>
-                        <outlet property="eastCard" destination="Jm2-n2-Vvl" id="dcG-zp-kRG"/>
-                        <outlet property="nameEast" destination="bkV-dL-umx" id="aco-ue-1wZ"/>
-                        <outlet property="nameWest" destination="G3a-G1-caS" id="g3Q-7s-vhC"/>
-                        <outlet property="scoreEast" destination="zfN-hf-Srm" id="U5X-w9-Lqm"/>
-                        <outlet property="scoreWest" destination="HJ1-Mm-x6o" id="OCM-u1-OKJ"/>
-                        <outlet property="westCard" destination="rtc-uO-U9k" id="5lH-Z8-rts"/>
+                        <outlet property="eastCardImageView" destination="Jm2-n2-Vvl" id="b08-hG-am8"/>
+                        <outlet property="eastPlayerNameLabel" destination="bkV-dL-umx" id="k5A-lY-9dw"/>
+                        <outlet property="eastPlayerScoreLabel" destination="zfN-hf-Srm" id="369-Kn-dnK"/>
+                        <outlet property="westCardImageView" destination="rtc-uO-U9k" id="WlB-wa-nKY"/>
+                        <outlet property="westPlayerNameLabel" destination="G3a-G1-caS" id="DoO-t5-cnd"/>
+                        <outlet property="westPlayerScoreLabel" destination="HJ1-Mm-x6o" id="J9i-Ge-JJ3"/>
                         <segue destination="tEw-29-Rrp" kind="show" identifier="showEnd" id="UTB-jW-M2q"/>
                     </connections>
                 </viewController>
@@ -201,13 +193,13 @@
         <!--End View Controller-->
         <scene sceneID="2hH-xU-kD8">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="tEw-29-Rrp" customClass="EndViewController" customModule="IosCardGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Hf-nc-clf">
+                <viewController modalPresentationStyle="fullScreen" id="tEw-29-Rrp" customClass="EndViewController" customModule="CardGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6Hf-nc-clf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner: Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-04-FZZ">
-                                <rect key="frame" x="53.333333333333343" y="113" width="255.00000000000003" height="50"/>
+                                <rect key="frame" x="79.666666666666686" y="113" width="255.00000000000006" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RY0-s3-eIs"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="tjo-yb-oT5"/>
@@ -217,7 +209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hob-Mf-jg2">
-                                <rect key="frame" x="120.66666666666669" y="248" width="120.33333333333331" height="50"/>
+                                <rect key="frame" x="147" y="248" width="120.33333333333331" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D6n-Ts-x72"/>
                                 </constraints>
@@ -226,7 +218,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shj-HG-Ofy">
-                                <rect key="frame" x="107.00000000000001" y="531" width="147.33333333333337" height="60"/>
+                                <rect key="frame" x="107" y="531" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="RyF-fR-rI7"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="pJa-Vk-qdN"/>
@@ -234,7 +226,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="BACK TO MENU"/>
                                 <connections>
-                                    <action selector="menuButtonTapped:" destination="tEw-29-Rrp" eventType="touchUpInside" id="hMo-7M-1jc"/>
+                                    <action selector="onMenuButtonTapped:" destination="tEw-29-Rrp" eventType="touchUpInside" id="Um3-IJ-ZBB"/>
                                     <segue destination="Ina-BI-o3c" kind="show" id="UZU-nN-W2K"/>
                                 </connections>
                             </button>
@@ -253,9 +245,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qii-Ns-Elg"/>
                     <connections>
-                        <outlet property="menu_BTN" destination="shj-HG-Ofy" id="E46-7A-MlW"/>
-                        <outlet property="scoreLabel" destination="Hob-Mf-jg2" id="LAz-Tr-Bd6"/>
-                        <outlet property="winnerLabel" destination="gdz-04-FZZ" id="4Qn-hM-hA5"/>
+                        <outlet property="finalScoreLabel" destination="Hob-Mf-jg2" id="xAf-Cu-xXa"/>
+                        <outlet property="menuButton" destination="shj-HG-Ofy" id="fpj-cy-EMB"/>
+                        <outlet property="resultLabel" destination="gdz-04-FZZ" id="faL-Xt-l0v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNW-t3-9kE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
