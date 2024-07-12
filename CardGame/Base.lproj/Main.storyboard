@@ -44,13 +44,13 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-iz-181">
-                                        <rect key="frame" x="61.666666666666657" y="126" width="270" height="601"/>
+                                        <rect key="frame" x="0.0" y="126" width="393" height="601"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="west" translatesAutoresizingMaskIntoConstraints="NO" id="4MF-go-6RJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="601"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="601"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="east" translatesAutoresizingMaskIntoConstraints="NO" id="AHS-3s-CRy">
-                                                <rect key="frame" x="150" y="0.0" width="120" height="601"/>
+                                                <rect key="frame" x="211.66666666666663" y="0.0" width="181.33333333333337" height="601"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -210,7 +210,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner: Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-04-FZZ">
-                                <rect key="frame" x="79.666666666666686" y="113" width="255.00000000000006" height="50"/>
+                                <rect key="frame" x="79.666666666666686" y="113" width="255" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RY0-s3-eIs"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="tjo-yb-oT5"/>
@@ -269,9 +269,9 @@
         <image name="after_noon" width="750" height="1334"/>
         <image name="cardBB" width="686" height="976"/>
         <image name="cardBR" width="686" height="976"/>
-        <image name="east" width="116" height="252"/>
+        <image name="east" width="262" height="442"/>
         <image name="logo" width="512" height="512"/>
-        <image name="west" width="120" height="248"/>
+        <image name="west" width="227" height="444"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
